@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import NavBar from './components/NavBar';
+import Home from './components/Home';
 
 function App() {
+  const [allBooks, setAllBooks] = useState([])
+  const [favoriteBooks, setFavoriteBooks] = useState([])
+  const [currentBook, setCurrentBook] = useState({})
+
+  useEffect(() => {
+    fetch("http://localhost:9292/books")
+      .then(res => res.json())
+      .then(data => setAllBooks(data))
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/favorites")
+      .then(res => res.json())
+      .then(data => setFavoriteBooks(data))
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/bookshelf")
+      .then(res => res.json())
+      .then(data => setCurrentBook(data))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <div className="p-4">
+        <Home allBooks={allBooks} favoriteBooks={favoriteBooks} currentBook={currentBook}/>
+      </div>
+    </>
   );
 }
 
