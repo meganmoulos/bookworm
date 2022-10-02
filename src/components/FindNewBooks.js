@@ -28,7 +28,7 @@ function FindNewBooks(props) {
                         <p>{currentBook.publication_year}</p>
                         <p>{currentBook.page_count} pages</p>
                     </div>
-                    <Link to="/addbook" className="p-7 font-serif"><button className="bg-lime-500 rounded w-40 p-4 mt-10">Add A Book</button></Link>
+                    <Link to="/addbook" className="p-4 font-serif"><button className="bg-lime-500 rounded w-40 p-4">Add A Book</button></Link>
                 </div>
                 <div className="flex flex-wrap bg-orange-100 rounded-md w-1/2">
                     {allBooks.map(book => <Book key={book.id} book={book} handleChangeDetail={handleChangeDetail} />)}

@@ -6,11 +6,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AllFavorites from './components/AllFavorites';
 import FindNewBooks from './components/FindNewBooks';
 import AddBook from './components/AddBook';
+import User from './components/User';
+import Search from './components/Search';
 
 function App() {
   const [allBooks, setAllBooks] = useState([])
   const [favoriteBooks, setFavoriteBooks] = useState([])
   const [currentBook, setCurrentBook] = useState(null)
+  const [stats, setStats] = useState([])
+  const [query, setQuery] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/books")
@@ -28,6 +32,12 @@ function App() {
     fetch("http://localhost:9292/bookshelf")
       .then(res => res.json())
       .then(data => setCurrentBook(data))
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/users")
+      .then(res => res.json())
+      .then(data => setStats(data))
   }, [])
 
   function handleDeleteFavorite(favorite){
@@ -72,6 +82,12 @@ function App() {
         </Route>
         <Route exact path="/addbook">
           <AddBook />
+        </Route>
+        <Route exact path="/user">
+          <User stats={stats}/>
+        </Route>
+        <Route exact path="/search">
+          <Search allBooks={allBooks} query={query} setQuery={setQuery}/>
         </Route>
       </Switch>
       

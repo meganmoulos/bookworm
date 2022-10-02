@@ -15,12 +15,29 @@ function NavBar(props) {
                     <NavLink 
                         to="/"
                         exact
-                        >
+                    >
                         <p className="font-semibold">Books</p>
                     </NavLink>
-                    <p className="text-slate-400">Articles</p>
+                    <NavLink
+                        to="/articles"
+                        exact
+                    >
+                        <p className="text-slate-400">Articles</p>
+                    </NavLink>
+                    <NavLink
+                    to="/search"
+                    exact
+                >
+                    <p>Search</p>
+                </NavLink>
                 </div>
-                <img className="userImage" src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt="user"/>
+
+                <NavLink
+                    to="/user"
+                    exact
+                >
+                    <img className="userImage" src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt="user"/>
+                </NavLink>
             </div>
         </div>
     );

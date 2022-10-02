@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import Bookshelf from './Bookshelf';
+import React, {useState} from 'react';
 
 const defaultBook = {
     title: "",
