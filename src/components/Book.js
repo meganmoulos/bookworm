@@ -1,8 +1,10 @@
 import React from 'react';
 
-function Book({book}) {
+function Book({book, handleChangeDetail}) {
+    // How to use stars instead of nums? let star = '⭐'
+
     return (
-        <div className="flex p-4">
+        <div onClick={() => handleChangeDetail(book)} className="flex p-4">
             <div className="flex">
                 <img className="w-[120px]" src={book.image_url} alt={book.title}/>
             </div>
@@ -12,6 +14,7 @@ function Book({book}) {
                 <p>{book.author}</p>
                 <p>{book.publication_year}</p>
                 <p>{book.page_count} pages</p>
+                {/* How to conditionally show Remove or Favorite button? */}
             </div>
         </div>
     );
