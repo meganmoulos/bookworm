@@ -10,7 +10,7 @@ import AddBook from './components/AddBook';
 function App() {
   const [allBooks, setAllBooks] = useState([])
   const [favoriteBooks, setFavoriteBooks] = useState([])
-  const [currentBook, setCurrentBook] = useState({})
+  const [currentBook, setCurrentBook] = useState(null)
 
   useEffect(() => {
     fetch("http://localhost:9292/books")
@@ -40,6 +40,20 @@ function App() {
     }
   }
 
+  function handleAddFavorite(favorite){
+    fetch("http://localhost:9292/favorites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        star_rating: 4,
+        user_id: 1,
+        book_id: favorite.id
+      }),
+    })
+  }
+
   return (
     <Router>
       <NavBar />
@@ -47,7 +61,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <div className="p-4">
-            <Home allBooks={allBooks} favoriteBooks={favoriteBooks} currentBook={currentBook} handleDeleteFavorite={handleDeleteFavorite}/>
+            <Home allBooks={allBooks} favoriteBooks={favoriteBooks} currentBook={currentBook} handleDeleteFavorite={handleDeleteFavorite} handleAddFavorite={handleAddFavorite}/>
           </div>
         </Route>
         <Route exact path="/favorites">

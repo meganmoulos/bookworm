@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Bookshelf from './Bookshelf';
 
 const defaultBook = {
     title: "",
@@ -14,7 +15,20 @@ function AddBook(props) {
 
 
     function createBook(book){
-        console.log(book)
+        fetch("http://localhost:9292/books", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: book.title,
+            author: book.author,
+            page_count: book.page_count,
+            publication_year: book.publication_year,
+            library_availablity: book.library_availablity,
+            image_url: book.image_url
+          }),
+        })
     }
 
     function handleSubmit(e){

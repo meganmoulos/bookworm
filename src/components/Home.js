@@ -3,7 +3,7 @@ import AllBooks from './AllBooks';
 import Bookshelf from './Bookshelf';
 import Favorites from './Favorites';
 
-function Home({allBooks, favoriteBooks, currentBook, handleDeleteFavorite}) {
+function Home({allBooks, favoriteBooks, currentBook, handleDeleteFavorite, handleAddFavorite}) {
 
     return (
         <>
@@ -14,7 +14,7 @@ function Home({allBooks, favoriteBooks, currentBook, handleDeleteFavorite}) {
                 </div>
             </div>
             <div className="">
-                <AllBooks allBooks={allBooks}/>
+                <AllBooks allBooks={allBooks} handleAddFavorite={handleAddFavorite} />
             </div>
         </>
     );
