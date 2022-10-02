@@ -5,12 +5,12 @@ import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AllFavorites from './components/AllFavorites';
 import FindNewBooks from './components/FindNewBooks';
+import AddBook from './components/AddBook';
 
 function App() {
   const [allBooks, setAllBooks] = useState([])
   const [favoriteBooks, setFavoriteBooks] = useState([])
   const [currentBook, setCurrentBook] = useState({})
-
 
   useEffect(() => {
     fetch("http://localhost:9292/books")
@@ -30,6 +30,16 @@ function App() {
       .then(data => setCurrentBook(data))
   }, [])
 
+  function handleDeleteFavorite(favorite){
+    const id = favorite.id
+    fetch(`http://localhost:9292/favorites/${id}`, {
+      method: "DELETE"
+    })
+    if(favoriteBooks.find(book => book.id === favorite.id)){
+      setFavoriteBooks(favoriteBooks.filter(oldBook => oldBook.id !== favorite.id))
+    }
+  }
+
   return (
     <Router>
       <NavBar />
@@ -37,14 +47,17 @@ function App() {
       <Switch>
         <Route exact path="/">
           <div className="p-4">
-            <Home allBooks={allBooks} favoriteBooks={favoriteBooks} currentBook={currentBook}/>
+            <Home allBooks={allBooks} favoriteBooks={favoriteBooks} currentBook={currentBook} handleDeleteFavorite={handleDeleteFavorite}/>
           </div>
         </Route>
         <Route exact path="/favorites">
           <AllFavorites />
         </Route>
-        <Route>
+        <Route exact path="/newbooks">
           <FindNewBooks />
+        </Route>
+        <Route exact path="/addbook">
+          <AddBook />
         </Route>
       </Switch>
       

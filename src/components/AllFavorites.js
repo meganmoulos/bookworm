@@ -15,8 +15,6 @@ function AllFavorites(props) {
         setCurrentFavorite(favorite)
     }
     
-    console.log(currentFavorite)
-
     return (
         <>
             <div className="flex w-full mb-4">
@@ -27,7 +25,7 @@ function AllFavorites(props) {
                     <p>{currentFavorite.author}</p>
                 </div>
                 <div className="flex flex-wrap bg-orange-100 rounded-md w-1/2">
-                    {favorites.map(book => <Book key={book.id} book={book} handleChangeDetail={handleChangeDetail} />)}
+                    {favorites.map(book => <Book key={book.id} book={book} handleChangeDetail={handleChangeDetail} favorited={true} />)}
                 </div>
             </div>
         </>
