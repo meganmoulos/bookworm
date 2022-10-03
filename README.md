@@ -1,6 +1,7 @@
 # Bookworm
 
-![screenshot](https://github.com/meganmoulos/bookworm/blob/stretch_goals/public/bookworm_screenshot.png)
+![screenshot](./public/bookworm_screenshot.png)
+
 ### Description
 Bookworm is a SPA for book lovers that allows a user to keep track of their favorite books and articles and find new books and articles to read.
 

@@ -1,10 +1,18 @@
 import React from 'react';
 import {useLocation} from "react-router-dom"
-import StarRating from './StarRating';
+
 
 function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handleAddFavorite}) {
-    // How to use stars instead of nums? let star = '⭐'
-    // put a ternary to only show star if rating > 0
+
+    let rating = book.star_rating
+    let star = "⭐"
+    let stars = []
+
+    if (rating > 0){
+        for (let i = 0; i < rating; i++){
+            stars += star
+        }
+    }
 
     let location = useLocation()
 
@@ -17,7 +25,7 @@ function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handle
         </div>
         <div className="flex flex-col p-4 w-[170px]">
             <p></p>
-            <p>{book.star_rating}</p>
+            <p>{stars}</p>
             <p className="text-md font-medium">{book.title}</p>
             <p className="text-sm">{book.author}</p>
             <p className="text-sm">{book.publication_year}</p>
@@ -33,7 +41,7 @@ function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handle
         </div>
         <div className="flex flex-col p-4 w-[170px]">
             <p></p>
-            <p>{book.star_rating}</p>
+            <p>{stars}</p>
             <p className="text-md font-medium">{book.title}</p>
             <p className="text-sm">{book.author}</p>
             <p className="text-sm">{book.publication_year}</p>
