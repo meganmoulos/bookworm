@@ -27,10 +27,10 @@ function AllFavorites(props) {
                         <p className="font-serif font-medium">{currentFavorite.title}</p>
                         <p>{currentFavorite.author}</p>
                         <p>{currentFavorite.publication_year}</p>
-                        <p>{currentFavorite.page_count} pages</p>
+                        <p>{currentFavorite.page_count}</p>
                     </div>
                 </div>
-                <div className="flex flex-wrap bg-orange-100 rounded-md w-1/2">
+                <div className="flex flex-wrap bg-orange-50 rounded-md w-1/2">
                     {favorites.map(book => <Book key={book.id} book={book} handleChangeDetail={handleChangeDetail} favorited={true} />)}
                 </div>
             </div>

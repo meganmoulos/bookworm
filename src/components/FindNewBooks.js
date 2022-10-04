@@ -26,11 +26,11 @@ function FindNewBooks(props) {
                         <p className="font-serif font-medium">{currentBook.title}</p>
                         <p>{currentBook.author}</p>
                         <p>{currentBook.publication_year}</p>
-                        <p>{currentBook.page_count} pages</p>
+                        <p>{currentBook.page_count}</p>
                     </div>
                     <Link to="/addbook" className="p-4 font-serif"><button className="bg-lime-500 rounded w-40 p-4">Add A Book</button></Link>
                 </div>
-                <div className="flex flex-wrap bg-orange-100 rounded-md w-1/2">
+                <div className="flex flex-wrap bg-orange-50 rounded-md w-1/2">
                     {allBooks.map(book => <Book key={book.id} book={book} handleChangeDetail={handleChangeDetail} />)}
                 </div>
             </div>

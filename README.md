@@ -1,6 +1,7 @@
 # Bookworm
 
-![screenshot](./public/bookworm_screenshot.png)
+![screenshot](./public/bookworm_screenshot1.png)
+![screenshot](./public/bookworm_screenshot2.png)
 
 ### Description
 Bookworm is a SPA for book lovers that allows a user to keep track of their favorite books and articles and find new books and articles to read.

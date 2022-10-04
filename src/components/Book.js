@@ -31,7 +31,7 @@ function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handle
             <p className="text-sm">{book.publication_year}</p>
             <p className="text-sm">{book.page_count} pages</p>
             {book.library_availability ? <p className="text-sm">Available at Library</p> : <p className="text-sm"> Unavailable at Library</p>}
-            {favorited ? <button className="text-left text-sm text-red-500 p-0" onClick={() => handleDeleteFavorite(book)}>Remove</button> : <button className="text-left text-sm text-green-500" onClick={() => handleAddFavorite(book)}>Favorite</button>}
+            {favorited ? <button className="text-left text-sm text-red-500 p-0" onClick={() => handleDeleteFavorite(book)}>Remove</button> : <button className="text-sm text-green-700 bg-green-100 rounded w-30" onClick={() => handleAddFavorite(book)}>Add Favorite</button>}
         </div>
     </div>
         :
@@ -47,7 +47,7 @@ function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handle
             <p className="text-sm">{book.publication_year}</p>
             <p className="text-sm">{book.page_count} pages</p>
             {book.library_availability ? <p className="text-sm">Available at Library</p> : <p className="text-sm"> Unavailable at Library</p>}
-            {favorited ? <button className="text-left text-sm text-red-500 p-0" onClick={() => handleDeleteFavorite(book)}>Remove</button> : <button className="text-left text-sm text-green-500" onClick={() => handleAddFavorite(book)}>Favorite</button>}
+            {favorited ? <button className="text-left text-sm text-red-500 p-0" onClick={() => handleDeleteFavorite(book)}>Remove</button> : <button className="text-sm text-green-700 bg-green-100 rounded w-30" onClick={() => handleAddFavorite(book)}>Add Favorite</button>}
         </div>
     </div>}
     </>
