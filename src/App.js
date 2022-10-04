@@ -9,6 +9,7 @@ import AddBook from './components/AddBook';
 import User from './components/User';
 import Search from './components/Search';
 import AllArticles from './components/AllArticles'
+import SavedArticles from './components/SavedArticles';
 
 function App() {
   const [allBooks, setAllBooks] = useState([])
@@ -17,6 +18,7 @@ function App() {
   const [stats, setStats] = useState([])
   const [query, setQuery] = useState([])
   const [allArticles, setAllArticles] = useState([])
+  const [savedArticles, setSavedArticles] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/books")
@@ -48,7 +50,11 @@ function App() {
       .then(data => setAllArticles(data))
   }, [])
 
-  console.log(allArticles)
+  useEffect(() => {
+    fetch("http://localhost:9292/saved")
+      .then(res => res.json())
+      .then(data => setSavedArticles(data))
+  }, [])
 
   function handleDeleteFavorite(favorite){
     const id = favorite.id
@@ -101,6 +107,9 @@ function App() {
         </Route>
         <Route exact path="/articles">
           <AllArticles allArticles={allArticles}/>
+        </Route>
+        <Route exact path="/saved">
+          <SavedArticles savedArticles={savedArticles}/>
         </Route>
       </Switch>
       

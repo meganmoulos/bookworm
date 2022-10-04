@@ -27,11 +27,16 @@ function NavBar(props) {
                     <NavLink
                     to="/search"
                     exact
-                >
-                    <p>Search</p>
-                </NavLink>
+                    >
+                        <p>Search</p>
+                    </NavLink>
+                    <NavLink
+                    to="/saved"
+                    exact
+                    >
+                        <p>Saved Articles</p>
+                    </NavLink>
                 </div>
-
                 <NavLink
                     to="/user"
                     exact
