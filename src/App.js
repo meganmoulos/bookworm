@@ -8,6 +8,7 @@ import FindNewBooks from './components/FindNewBooks';
 import AddBook from './components/AddBook';
 import User from './components/User';
 import Search from './components/Search';
+import AllArticles from './components/AllArticles'
 
 function App() {
   const [allBooks, setAllBooks] = useState([])
@@ -15,6 +16,7 @@ function App() {
   const [currentBook, setCurrentBook] = useState(null)
   const [stats, setStats] = useState([])
   const [query, setQuery] = useState([])
+  const [allArticles, setAllArticles] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/books")
@@ -39,6 +41,14 @@ function App() {
       .then(res => res.json())
       .then(data => setStats(data))
   }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/articles")
+      .then(res => res.json())
+      .then(data => setAllArticles(data))
+  }, [])
+
+  console.log(allArticles)
 
   function handleDeleteFavorite(favorite){
     const id = favorite.id
@@ -88,6 +98,9 @@ function App() {
         </Route>
         <Route exact path="/search">
           <Search allBooks={allBooks} query={query} setQuery={setQuery}/>
+        </Route>
+        <Route exact path="/articles">
+          <AllArticles allArticles={allArticles}/>
         </Route>
       </Switch>
       

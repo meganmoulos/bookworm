@@ -22,7 +22,7 @@ function NavBar(props) {
                         to="/articles"
                         exact
                     >
-                        <p className="text-slate-400">Articles</p>
+                        <p className="font-semibold">Articles</p>
                     </NavLink>
                     <NavLink
                     to="/search"

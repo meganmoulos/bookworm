@@ -1,8 +1,11 @@
 import React from 'react';
 import {useLocation} from "react-router-dom"
+import StarRating from './StarRating';
 
 function Book({book, handleChangeDetail, favorited, handleDeleteFavorite, handleAddFavorite}) {
     // How to use stars instead of nums? let star = '⭐'
+    // put a ternary to only show star if rating > 0
+
     let location = useLocation()
 
     return (
